@@ -72,10 +72,15 @@ def geturls(urls):
 
         request = urllib2.Request(url)
         opener = urllib2.build_opener()
-        f = opener.open(request)
 
-        with open(name, "wb") as local_file:
-                 local_file.write(f.read())
+        try:
+            f = opener.open(request)
+
+            with open(name, "wb") as local_file:
+                local_file.write(f.read())
+
+        except:
+            print "error trying to download file"
 
 
 def main(arg):
